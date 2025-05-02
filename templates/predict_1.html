@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        .container {
+            flex: 2;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-container {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            height: fit-content;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            flex: 2;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result-box {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .high-risk {
+            background: red;
+        }
+
+        .low-risk {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">CardioX</div>
+        <ul>
+            <li><a href="{% url 'homepage' %}" class="active">Home</a></li>
+            <li><a href="{% url 'predictor' %}">Predictor</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="main-container">
+    <div class="container">
+        <h1>Heart Disease Predictor</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Form Fields -->
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" name="bmi" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="smoking">Smoking:</label>
+                <select name="smoking" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="AlcoholDrinking">Alcohol Drinking:</label>
+                <select name="AlcoholDrinking" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="stroke">Stroke:</label>
+                <select name="stroke" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="physical_health">Physical Health:</label>
+                <input type="number" name="physical_health" min="0" max="30" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mental_health">Mental Health:</label>
+                <input type="number" name="mental_health" min="0" max="30" required>
+            </div>
+
+            <div class="form-group">
+                <label for="diff_walking">Difficulty Walking:</label>
+                <select name="diff_walking" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select name="sex" required>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="age_category">Age Category:</label>
+                <select name="age_category" required>
+                    <option value="1">18-24</option>
+                    <option value="2">25-29</option>
+                    <option value="3">30-34</option>
+                    <option value="4">35-39</option>
+                    <option value="5">40-44</option>
+                    <option value="6">45-49</option>
+                    <option value="7">50-54</option>
+                    <option value="8">55-59</option>
+                    <option value="9">60-64</option>
+                    <option value="10">65-69</option>
+                    <option value="11">70-74</option>
+                    <option value="12">75-79</option>
+                    <option value="13">80 or older</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="race">Race:</label>
+                <select name="race" required>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Hispanic">Hispanic</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="diabetic">Diabetic:</label>
+                <select name="diabetic" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="physical_activity">Physical Activity:</label>
+                <select name="physical_activity" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="gen_health">General Health:</label>
+                <select name="gen_health" required>
+                    <option value="1">Excellent</option>
+                    <option value="2">Very good</option>
+                    <option value="3">Good</option>
+                    <option value="4">Fair</option>
+                    <option value="5">Poor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sleep_time">Sleep Time (hours):</label>
+                <input type="number" name="sleep_time" min="0" max="24" step="0.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asthma">Asthma:</label>
+                <select name="asthma" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="kidney_disease">Kidney Disease:</label>
+                <select name="kidney_disease" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="skin_cancer">Skin Cancer:</label>
+                <select name="skin_cancer" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <div class="result-container">
+        <h2>Prediction Result</h2>
+        {% if prediction is not None %}
+            <div class="result-box {% if prediction == 1 %}high-risk{% else %}low-risk{% endif %}">
+                {% if prediction == 1 %}
+                    High Risk
+                {% else %}
+                    Low Risk
+                {% endif %}
+            </div>
+        {% else %}
+            <p>Submit the form to get a prediction.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

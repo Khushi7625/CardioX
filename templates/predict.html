@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioX</title>
+    <link rel="stylesheet" href="{% static 'predictor/predict.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Aligning the Logo on the Left */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Navbar links and logout aligned on the right */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Navbar Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a i {
+    color: #0d6efd;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    color: #0d6efd;
+}
+
+/* Logout Button */
+.logout {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid #0d6efd;
+    color: #0d6efd;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.logout i {
+    color: #0d6efd;
+}
+
+.logout:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.logout:hover i {
+    color: white;
+}
+</style>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span style="font-weight: 600; font-size: 1.5rem; color: #0d6efd;">CARDIO<span style="color: #000;">X</span></span>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{% url 'homepage' %}" ><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'predictor' %}" ><i class="fas fa-stethoscope"></i> Predictors</a></li>
+                    <li><a href="{% url 'about' %}" ><i class="fas fa-info-circle "></i> About Us</a></li>
+                </ul>
+                <button class="logout">
+                    <i class="fa fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p>The Comprehensive Health Diagnostics Suite utilizes AI technology...</p>
+    </section>
+
+    <section class="cards">
+        <a href="{% url 'predict_1' %}" class="card">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Heart Disease</h3>
+            <p>AI solutions for accurate prediction and early intervention.</p>
+        </a>
+        <a href="{% url 'predict_2' %}" class="card">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Heart Disease</h3>
+            <p>AI-driven insights Smart diagnosis from reports.</p>
+        </a>
+    </section>
+</body>
+</html>

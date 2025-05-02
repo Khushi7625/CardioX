@@ -1,44 +1,49 @@
 # CardioX
-💓 CardioX: Heart Disease Prediction System
+# 💓 **CardioX: Heart Disease Prediction System**
 
-CardioX is an intelligent and user-friendly Heart Disease Prediction System built using Django and Machine Learning. The application uses various health parameters to predict the likelihood of heart disease, providing users with an early warning and helping healthcare providers make informed decisions.
+CardioX is an intelligent and user-friendly **Heart Disease Prediction System** built using Django and Machine Learning. The application uses various health parameters to predict the likelihood of heart disease, providing users with an early warning and helping healthcare providers make informed decisions.
 
-🚀 Features
-💡 Accurate Heart Disease Prediction: Uses machine learning models to predict the likelihood of heart disease based on user input.
+---
 
-🖥️ Easy-to-Use Interface: Simple, intuitive form-based interface for data input.
+## 🚀 **Features**
 
-⏱️ Real-Time Results: Get immediate predictions based on health data entered.
+- 💡 **Accurate Heart Disease Prediction:** Uses machine learning models to predict the likelihood of heart disease based on user input.
+- 🖥️ **Easy-to-Use Interface:** Simple, intuitive form-based interface for data input.
+- ⏱️ **Real-Time Results:** Get immediate predictions based on health data entered.
 
-🛠️ Technologies Used
-Backend: Django (Python Web Framework)
+---
 
-Machine Learning: Pickle for model storage and prediction
+## 🛠️ **Technologies Used**
 
-Frontend: HTML, CSS for UI design
+- **Backend:** Django (Python Web Framework)
+- **Machine Learning:** Pickle for model storage and prediction
+- **Frontend:** HTML, CSS for UI design
+- **Libraries:** Numpy, Pandas, Scikit-learn for data processing and model training
 
-Libraries: Numpy, Pandas, Scikit-learn for data processing and model training
+---
 
-🔑 Key Models
+## 🔑 **Key Models**
+
 The system uses two Machine Learning Models:
 
-Model 1: Based on heart rate, cholesterol levels, and other factors.
+1. **Model 1:** Based on heart rate, cholesterol levels, and other factors.
+2. **Model 2:** More advanced, considering additional parameters like physical health and age category.
 
-Model 2: More advanced, considering additional parameters like physical health and age category.
+---
 
-🧠 How It Works
-User Input: The user fills out a form with their health data such as age, cholesterol level, blood pressure, and others.
+## 🧠 **How It Works**
 
-Data Processing: The data is processed and cleaned using Python libraries.
+- **User Input:** The user fills out a form with their health data such as age, cholesterol level, blood pressure, and others.
+- **Data Processing:** The data is processed and cleaned using Python libraries.
+- **Prediction:** The data is passed through a pre-trained ML model, and a heart disease risk prediction is made (1 for high risk, 0 for low risk).
+- **Result:** The user receives an immediate result showing whether they are at high risk of heart disease or not.
 
-Prediction: The data is passed through a pre-trained ML model, and a heart disease risk prediction is made (1 for high risk, 0 for low risk).
+---
 
-Result: The user receives an immediate result showing whether they are at high risk of heart disease or not.
+## 🧑‍💻 **Usage**
 
-🧑‍💻 Usage
-Step 1: Fill in Your Details
-Enter health parameters such as age, sex, cholesterol levels, and maximum heart rate.
+1. **Step 1: Fill in Your Details**  
+   Enter health parameters such as age, sex, cholesterol levels, and maximum heart rate.
 
-Step 2: Get Your Prediction
-After submitting the form, you’ll receive a prediction about your risk of heart disease.
-
+2. **Step 2: Get Your Prediction**  
+   After submitting the form, you’ll receive a prediction about your risk of heart disease.
